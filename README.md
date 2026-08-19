@@ -3,6 +3,8 @@
 The website for **$MILES**, a meme coin on Arbitrum One named after Miles, a
 liver-and-white English Springer Spaniel who sits by the desk in an Arbitrum shirt.
 
+Live at **https://miles-arbitrum-dogs.vercel.app**
+
 A single self-contained static page. No build step, no dependencies, no framework.
 
 ```
@@ -12,7 +14,7 @@ assets/miles2.jpg   the wide hero banner
 vercel.json         cache and security headers
 ```
 
-## Before you launch — three things to fill in
+## Before you launch — two things to fill in
 
 The page ships with placeholders. Search `index.html` for each and replace it:
 
@@ -20,11 +22,14 @@ The page ships with placeholders. Search `index.html` for each and replace it:
 | --- | --- | --- |
 | Contract address | `0x0000000000000000000000000000000000000000` | `<p class="ca__value" id="ca-value">` |
 | Social links | `href="#"` | the hero `.btn-row` and the footer `.foot__links` |
-| Absolute image URLs | `assets/miles2.jpg` in the `og:image` / `twitter:image` tags | `<head>` |
 
-That last one matters for link previews: Telegram, X and Discord need a **fully
-qualified** URL, so once the domain is live set them to
-`https://your-domain.com/assets/miles2.jpg`.
+There are five `href="#"` links to fill: **Chart**, **Telegram** and **X** in the
+hero, then Telegram, X, Dexscreener, Arbiscan and Uniswap in the footer.
+
+If the site moves to a custom domain, update the absolute origin in the `<head>` —
+`canonical`, `og:url`, `og:image` and `twitter:image` all point at
+`https://miles-arbitrum-dogs.vercel.app`. Link previews on X, Telegram and Discord
+will not resolve a relative image URL, so these have to stay fully qualified.
 
 The tokenomics in the *Token* section (1,000,000,000 supply, 0/0 tax, LP burned,
 ownership renounced) are the conventional fair-launch defaults. Confirm each one

@@ -1,87 +1,70 @@
-# MILES — Arbitrum Dogs
+# MILES
 
-The website for **$MILES**, a meme coin on Arbitrum One named after Miles, a
-liver-and-white English Springer Spaniel who sits by the desk in an Arbitrum shirt.
+The website for MILES, a meme coin on Arbitrum One named after Miles, an English
+Springer Spaniel who sits by the desk in an Arbitrum shirt.
 
-Live at **https://miles-arbitrum-dogs.vercel.app**
+Live at https://miles-arbitrum-dogs.vercel.app
 
-A single self-contained static page. No build step, no dependencies, no framework.
+One self contained static page. No build step, no dependencies, no framework.
 
 ```
-index.html          the whole site — markup, styles and scripts in one file
-assets/miles.jpg    Miles' portrait (also used as the favicon)
-assets/miles2.jpg   the wide hero banner
+index.html          the whole site, markup and styles and script in one file
+assets/miles.jpg    Miles' portrait, also used as the favicon
+assets/miles2.jpg   the wide banner strip
 vercel.json         cache and security headers
 ```
 
-## Before you launch — two things to fill in
+## Token
 
-The page ships with placeholders. Search `index.html` for each and replace it:
+| | |
+| --- | --- |
+| Contract | `0x6beadFCC25F6BC71C158a4Bff85bf2F1746D2ca7` |
+| Network | Arbitrum One |
+| Total supply | 1,000,000,000 at 18 decimals |
+| Pair | Uniswap, against WETH |
+| Pair address | `0x06f2d9e061dfc85561595e79022531ce099d1501` |
 
-| What | Placeholder | Where |
-| --- | --- | --- |
-| Contract address | `0x0000000000000000000000000000000000000000` | `<p class="ca__value" id="ca-value">` |
-| Social links | `href="#"` | the hero `.btn-row` and the footer `.foot__links` |
-
-There are five `href="#"` links to fill: **Chart**, **Telegram** and **X** in the
-hero, then Telegram, X, Dexscreener, Arbiscan and Uniswap in the footer.
-
-If the site moves to a custom domain, update the absolute origin in the `<head>` —
-`canonical`, `og:url`, `og:image` and `twitter:image` all point at
-`https://miles-arbitrum-dogs.vercel.app`. Link previews on X, Telegram and Discord
-will not resolve a relative image URL, so these have to stay fully qualified.
-
-The tokenomics in the *Token* section (1,000,000,000 supply, 0/0 tax, LP burned,
-ownership renounced) are the conventional fair-launch defaults. Confirm each one
-against the deployed contract and correct anything that differs.
+Every figure above was read off the contract and the Uniswap pair, not assumed.
+If you add anything to the token section, verify it the same way first.
 
 ## Design
 
-Arbitrum's chain colours carry the page, warmed by Miles' own coat so it doesn't
-read as a generic blue crypto site:
+Arbitrum's chain colours carry the page, warmed by the brown of Miles' coat so it
+does not read as a generic blue crypto site. One committed dark look, no light
+theme.
 
 | Token | Hex | Role |
 | --- | --- | --- |
-| `--bg` | `#0B1420` | deep navy ground |
-| `--line` | `#213147` | Arbitrum dark blue, borders |
-| `--arb` | `#12AAFF` | Arbitrum light blue, the accent |
-| `--liver` | `#B4713F` | Miles' liver coat, counter-accent |
-| `--ink` | `#EFE7DF` | warm cream text |
+| `--navy` | `#0E1626` | ground |
+| `--card` | `#16233A` | panels |
+| `--line` | `#27395A` | borders |
+| `--blue` | `#12AAFF` | Arbitrum blue, the accent |
+| `--liver` | `#C4834E` | Miles' coat, counter accent |
+| `--cream` | `#F5F0E8` | text |
 
-Type is Archivo (variable width, set wide to echo the lettering in the banner),
-Instrument Sans for body copy, and JetBrains Mono for the contract address and
-stats.
+Type is Anton for the big poster headlines, Figtree for body copy, and JetBrains
+Mono for the contract address and labels.
 
-The drifting speckle texture in the background is **ticking** — the flecked
-marking on Miles' legs and chest that English Springers are known for. It is
-generated on a canvas: one seamless tile of flecks built once, then panned as a
-repeating pattern, so it costs a single `fillRect` per frame. It holds still for
-anyone with `prefers-reduced-motion` set.
-
-Both themes are defined at token level, covering all three viewer states — light,
-dark, and the unstamped system default.
+The page is plain ASCII throughout on purpose. No em dashes, no slash separators,
+no box drawing characters in the comments. Keep it that way when you edit it.
 
 ## Local preview
 
-Any static server works:
-
 ```bash
 python -m http.server 8000
-# then open http://localhost:8000
 ```
+
+Then open http://localhost:8000
 
 ## Deploy
 
-Pushed to `main` deploys automatically. Or from the CLI:
+Pushing to `main` deploys automatically. From the CLI:
 
 ```bash
 vercel --prod
 ```
 
-## Disclaimer
-
-$MILES is a meme coin made for entertainment, with no intrinsic value and no
-expectation of return. Nothing on the site is financial advice. It is not
-affiliated with or endorsed by Offchain Labs, the Arbitrum Foundation, or the
-Arbitrum DAO — the Arbitrum name and colours appear only to identify the network
-the token runs on.
+If the site moves to a custom domain, update the absolute origin in the `head`.
+The `canonical`, `og:url`, `og:image` and `twitter:image` tags all point at
+`https://miles-arbitrum-dogs.vercel.app` and link previews on Telegram, Twitter
+and Discord will not resolve a relative image path.
